@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade3</title>
+    <style>
+        body{
+            background:rgb(176, 176, 177);
+            color:black;
+            font: normal 18pt Arial;    
+         }       
+         h1{ 
+            margin-left: 120px;
+            }   
+        div {
+            font: normal 22pt Arial;
+        }
+        div#dec{
+            margin-left: 100px;
+        }
+        input, textarea {
+            background: white;
+            border: black;
+	        font-size: 18pt;
+            height: 32px;
+        }  
+        div#bin{
+            margin-left: 100px;
+            width: 240px;
+            height: 30px;
+            float: left;      
+          }
+        div#con{
+            font: bold 28pt Arial;   
+            color: rgb(0, 0, 0); 
+            height: 32px;
+            float: left; 
+         }   
+    </style>
+</head>
+
+<body>
+    <h3>Claudio da Silva Barcellos </h3>
+    <h3>RGM: 24370185   </h3>
+    <h1>Conversor Decimal -> Hexadecimal</h1>
+    </br>
+
+    <div id="dec">Número Decimal :
+        <input type="number" style="padding-left:10px" name="decn1" id="decn1" value="0"> 
+        <input type="button" value="Converter" onclick="converter()">
+    </div>
+    </br>  
+    <div id="bin">Hexadecimal:</div>
+    <div id="con">0</div>
+    
+
+</body>
+
+<script>
+    function converter(){
+    var dec1 = document.getElementById('decn1');
+    var con =  document.getElementById('con');
+    var n1= Number(dec1.value);
+    var num=n1;
+    var st =[0];
+    var z=0;
+    var i=0;
+    var neg=0;
+    con.innerHTML = " "
+
+
+    // Verifica se o número é negativo    
+if (n1<0)  {
+    n1=n1*-1
+    num=num*-1
+    n2=n1
+    neg=1
+}
+
+// Verifica o número digitado
+ if (num<16){
+    st[i]= num
+ }
+
+// Conversão  divisão numero decimal por 16
+
+if (num>=1){
+    while(n1>=16) {
+    res= n1%16
+    n1=n1/16
+    var s1 =Number.parseInt(res)
+    var s2 =Number.parseInt(n1)
+    st[i]= s1
+    i=i+1
+    z=1 
+    }
+}
+// Fim da divisão
+if (z==1) { 
+st[i]=s2
+}  
+
+// Se negativo coloca sinal (-)
+if (neg==1){  
+    i=i+1
+    st[i]=-1
+
+}
+
+
+// Montagem do número hexadecimal
+var y=i
+while(y>=0){
+    if (st[y]==10){ z='A'}
+    if (st[y]==11){ z='B'}
+    if (st[y]==12){ z='C'}
+    if (st[y]==13){ z='D'}
+    if (st[y]==14){ z='E'}
+    if (st[y]==15){ z='F'}
+    if (st[y]>=0 & st[y]<10 ){ z=String(st[y])}  
+    if (st[y]<0) {z="-"}
+    con.innerHTML += z 
+ y=y-1
+}
+
+
+}
+
+
+
+</script>
